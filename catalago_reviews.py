@@ -43,7 +43,16 @@ class Obras:
             base += f" | {extra}"
         return f"{base} | media: {self.media():.1f}  ({len(self.avaliacoes)})"
 
-        
+class Filme(Obras):
+    tipo = "Filme"
+    def __init__(self, titulo, ano, genero, duracao_min):
+        super().__init__(titulo, ano, genero)
+        self.duracao_min = duracao_min
+
+    def detalhes(self):
+        return f"{self.duracao_min} min"
+
+
 
 def main():
     avaliacao = Avaliacao("Joel", 9,"otimo filme")
@@ -55,6 +64,10 @@ def main():
     obras.adicional_avalicao(Avaliacao("bruno",10 ))
     print(obras)
     print("media: ",obras.media())
+
+    filme = Filme("Matrix",1999, "Ficcao cientifica", 136)
+    filme.adicional_avalicao(Avaliacao("pedro",8 ))
+    print(filme)
 
 if __name__ == "__main__":
     main()
